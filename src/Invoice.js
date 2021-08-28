@@ -102,21 +102,18 @@ export default function Invoice() {
             className={classes.appBar}
           >
             <Toolbar>
-              <Typography variant="h6" color="inherit" noWrap>
+              <Typography variant="h6" color="inherit" noWrap align="center">
                 UniCS Invoice Generator
               </Typography>
             </Toolbar>
           </AppBar>
           <Box className={classes.layout}>
             <Paper className={classes.paper}>
-              <Typography component="h1" variant="h4" align="center">
-                Generate Invoice
-              </Typography>
-
               {activeStep === 0 ? (
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    setActiveStep(1);
                   }}
                 >
                   <Grid container spacing={3}>
@@ -192,9 +189,6 @@ export default function Invoice() {
                       variant="contained"
                       color="primary"
                       type="submit"
-                      onClick={() => {
-                        setActiveStep(1);
-                      }}
                       className={classes.button}
                     >
                       Next

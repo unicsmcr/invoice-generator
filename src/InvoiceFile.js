@@ -1,7 +1,7 @@
 import React, { ref } from "react";
-import "./InvoiceFile.css";
 import { Button, Box } from "@material-ui/core";
 import { PDFExport } from "@progress/kendo-react-pdf";
+import "./InvoiceFile.css";
 
 export default function InvoiceFile(props) {
   const pdfExportComponent = React.createRef(null);
@@ -11,7 +11,12 @@ export default function InvoiceFile(props) {
   return (
     <>
       <Box display="flex" justifyContent="center" m={2}></Box>
-      <PDFExport ref={pdfExportComponent}>
+      <PDFExport
+        ref={pdfExportComponent}
+        fileName={"Invoice " + props.invoiceNumber}
+        creator="UniCS"
+        title={"UniCS Invoice " + props.eventName + " - " + props.tierName}
+      >
         <div className="invoice-box" ref={ref}>
           <table cellPadding="0" cellSpacing="0">
             <tr className="top">
@@ -19,11 +24,7 @@ export default function InvoiceFile(props) {
                 <table>
                   <tr>
                     <td className="title">
-                      <img
-                        className="img"
-                        alt=""
-                        src="/logo.png"
-                      />
+                      <img className="img" alt="" src="/logo.png" />
                     </td>
                     <td></td>
                     <td></td>
@@ -79,21 +80,21 @@ export default function InvoiceFile(props) {
                     <td>
                       <b>Payment Details</b>
                       <br />
-                      Bank: UNKNOWN
+                      Bank: Santander
                       <br />
-                      Account Number: UNKNOWN
+                      Account Number: 10299375
                       <br />
-                      Sort Code: UNKNOWN
+                      Sort Code: 09-02-22
                       <br />
-                      Society Reference Number: UNKNOWN
+                      Reference: RS642
                       <br />
-                      IBAN: UNKNOWN
+                      IBAN: GB16ABBY09022210299375
                       <br />
-                      SWIFT: UNKNOWN
+                      SWIFT: ABBYGB2LXXX
                       <br />
-                      VAT Number :UNKNOWN
+                      VAT Number: 181987166
                       <br />
-                      Company Region: UNKNOWN
+                      Company Region: 7759800
                     </td>
                   </tr>
                 </table>
