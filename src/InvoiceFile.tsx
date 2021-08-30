@@ -1,26 +1,43 @@
-import React, { ref } from "react";
+import React, { useRef } from "react";
 import { Button, Box } from "@material-ui/core";
 import { PDFExport } from "@progress/kendo-react-pdf";
 import "./InvoiceFile.css";
 
-export default function InvoiceFile(props) {
-  const pdfExportComponent = React.createRef(null);
-  const handleExportWithComponent = (event) => {
-    pdfExportComponent.current.save();
+interface InvoiceFileProps {
+  invoiceNumber: string;
+  eventName: string;
+  tierName: string;
+  value: string;
+  country: string;
+  zip: string;
+  city: string;
+  address1: string;
+  address2: string;
+  companyName: string;
+  paymentDate: string;
+  issueDate: string;
+}
+
+export default function InvoiceFile(props: InvoiceFileProps) {
+  const pdfExport = useRef<PDFExport>(null);
+  const handleExport = () => {
+    if (pdfExport && pdfExport.current) {
+      pdfExport.current.save();
+    }
   };
   return (
     <>
       <Box display="flex" justifyContent="center" m={2}></Box>
       <PDFExport
-        ref={pdfExportComponent}
+        ref={pdfExport}
         fileName={"Invoice " + props.invoiceNumber}
         creator="UniCS"
         title={"UniCS Invoice " + props.eventName + " - " + props.tierName}
       >
-        <div className="invoice-box" ref={ref}>
+        <div className="invoice-box">
           <table cellPadding="0" cellSpacing="0">
             <tr className="top">
-              <td colSpan="4">
+              <td colSpan={4}>
                 <table>
                   <tr>
                     <td className="title">
@@ -41,7 +58,7 @@ export default function InvoiceFile(props) {
             </tr>
 
             <tr className="information">
-              <td colSpan="4">
+              <td colSpan={4}>
                 <table>
                   <tr>
                     <td>
@@ -200,7 +217,7 @@ export default function InvoiceFile(props) {
         </div>
       </PDFExport>
       <Box display="flex" justifyContent="center" m={4}>
-        <Button onClick={handleExportWithComponent} variant="contained">
+        <Button onClick={handleExport} variant="contained">
           Download PDF
         </Button>
       </Box>

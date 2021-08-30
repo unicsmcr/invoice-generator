@@ -7,8 +7,15 @@
     "@progress/kendo-drawing": "^1.11.0",
     "@progress/kendo-licensing": "^1.2.0",
     "@progress/kendo-react-pdf": "^4.8.0",
+    "@types/node": "^16.7.8",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "typescript": "^4.4.2"
+  },
+  "devDependencies": {
+    "prettier": "2.3.2",
     "react-scripts": "4.0.3"
   },
   "scripts": {

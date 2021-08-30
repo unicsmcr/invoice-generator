@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -10,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-
 import InvoiceFile from "./InvoiceFile";
 
 const useStyles = makeStyles((theme) => ({
@@ -77,12 +75,12 @@ export default function Invoice() {
     paymentDate: getCurrentDate(),
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setActiveStep(2);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({
       ...formValues,
       [e.target.id]: e.target.value,
